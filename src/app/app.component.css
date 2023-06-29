@@ -1,0 +1,22 @@
+.sidebar {
+  grid-row: 1 / -1;
+  height: 100%;
+  display: flex;
+  background-color: var(--color-grey-2);
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.searchbar-container {
+  grid-column: 2 / -1;
+}
+
+.main {
+  grid-column: 2/-1;
+  grid-row: 2/-1;
+  display: grid;
+  align-content: start;
+  gap: 3rem;
+}
