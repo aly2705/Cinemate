@@ -1,13 +1,14 @@
 <div
   [ngStyle]="{
-    backgroundImage: getBackground()
+    backgroundImage: getBackground(movie.coverUrl)
   }"
   class="movie-card"
+  (click)="onOpenDetails()"
 >
   <button class="bookmark-btn">
     <svg class="bookmark-icon">
       <use xlink:href="../../../assets/icons.svg#icon-bookmark"></use>
     </svg>
   </button>
-  <div class="movie-title">Beyond limits</div>
+  <div class="movie-title">{{ movie.title }}</div>
 </div>

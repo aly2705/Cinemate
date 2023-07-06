@@ -1,6 +1,24 @@
-<ul class="list">
-  <app-movie-card></app-movie-card>
-  <app-movie-card></app-movie-card>
-  <app-movie-card></app-movie-card>
-  <app-movie-card></app-movie-card>
-</ul>
+<button type="button" class="list__btn list__btn--back" (click)="onShowBack()">
+  <svg>
+    <use href="../../../assets/icons.svg#icon-arrow-left"></use>
+  </svg>
+</button>
+<button
+  type="button"
+  class="list__btn list__btn--next"
+  (click)="onShowNext($event)"
+>
+  <svg>
+    <use href="../../../assets/icons.svg#icon-arrow-right"></use>
+  </svg>
+</button>
+<div class="list">
+  <app-movie-card
+    class="card"
+    #listItem
+    *ngFor="let movie of movieList; let i = index; let last = last"
+    [movie]="movie"
+    [id]="i"
+    [ngStyle]="{ transform: getOffset(i) }"
+  ></app-movie-card>
+</div>

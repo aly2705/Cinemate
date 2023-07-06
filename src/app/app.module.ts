@@ -8,11 +8,20 @@ import { MainComponent } from './main/main.component';
 import { MovieListComponent } from './main/movie-list/movie-list.component';
 import { MovieCardComponent } from './main/movie-card/movie-card.component';
 import { MovieDetailsComponent } from './main/movie-details/movie-details.component';
+import { MoviesService } from './movies.service';
 
 @NgModule({
-  declarations: [AppComponent, SidebarComponent, SearchbarComponent, MainComponent, MovieListComponent, MovieCardComponent, MovieDetailsComponent],
+  declarations: [
+    AppComponent,
+    SidebarComponent,
+    SearchbarComponent,
+    MainComponent,
+    MovieListComponent,
+    MovieCardComponent,
+    MovieDetailsComponent,
+  ],
   imports: [BrowserModule],
-  providers: [],
+  providers: [MoviesService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

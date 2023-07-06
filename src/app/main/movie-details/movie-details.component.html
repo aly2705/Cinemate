@@ -1,34 +1,25 @@
-<div class="backdrop"></div>
+<div class="backdrop" (click)="onCloseModal()"></div>
 <div class="movie-modal">
-  <img
-    class="movie-poster"
-    src="https://image.tmdb.org/t/p/w342/fiVW06jE7z9YnO4trhaMEdclSiC.jpg"
-    alt="Film Poster"
-  />
+  <img class="movie-poster" src="{{ movieData.posterUrl }}" alt="Film Poster" />
   <div class="movie-details">
-    <button class="btn close-btn">&#10006;</button>
-    <h3 class="movie-title">Fast X</h3>
+    <button class="btn close-btn" (click)="onCloseModal()">&#10006;</button>
+    <h3 class="movie-title">{{ movieData.title }}</h3>
     <ul class="movie-info">
       <li class="movie-info__item">
         <svg>
           <use xlink:href="../../../assets/icons.svg#icon-calendar"></use>
         </svg>
-        <span>Release Date: 2023-05-17</span>
+        <span>Release Date: {{ movieData.releaseDate }}</span>
       </li>
       <li class="movie-info__item">
         <svg>
           <use xlink:href="../../../assets/icons.svg#icon-star-full"></use>
         </svg>
-        <span>Rating: 7.2</span>
+        <span>Rating: {{ movieData.rating }}</span>
       </li>
     </ul>
     <p class="movie-overview">
-      Over many missions and against impossible odds, Dom Toretto and his family
-      have outsmarted, out-nerved and outdriven every foe in their path. Now,
-      they confront the most lethal opponent they've ever faced: A terrifying
-      threat emerging from the shadows of the past who's fueled by blood
-      revenge, and who is determined to shatter this family and destroy
-      everything—and everyone—that Dom loves, forever.
+      {{ movieData.overview }}
     </p>
     <div class="btns">
       <button class="btn play-btn">

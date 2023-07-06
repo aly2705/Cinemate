@@ -7,6 +7,7 @@
   background-color: var(--color-backdrop);
   z-index: 10;
   backdrop-filter: blur(2px);
+  cursor: pointer;
 }
 
 .movie-modal {
@@ -24,13 +25,13 @@
 }
 
 .movie-poster {
-  width: 30%;
+  width: 33%;
 }
 
 .movie-details {
   display: flex;
   flex-direction: column;
-  padding: 2.5rem 4rem;
+  padding: 4rem;
   position: relative;
   gap: 3rem;
 }
