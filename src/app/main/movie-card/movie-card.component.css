@@ -14,6 +14,11 @@
   transition: transform 0.3s ease;
   margin: 0 1rem;
 }
+@media only screen and (max-width: 37.5em) {
+  .movie-card {
+    width: 19rem;
+  }
+}
 
 .movie-card:hover {
   transform: scale(1.08);

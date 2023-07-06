@@ -29,6 +29,20 @@
   display: grid;
   gap: 3rem;
 }
+@media only screen and (max-width: 37.5em) {
+  .nav {
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+    justify-content: end;
+  }
+  .nav__links {
+    display: flex;
+    gap: 3rem;
+    margin-right: 3rem;
+  }
+}
 
 .nav__link,
 .nav__link:link,
@@ -60,4 +74,13 @@
 .attribution {
   font-size: 1.2rem;
   color: var(--color-text-secondary);
+}
+
+@media only screen and (max-width: 31.25em) {
+  .attribution {
+    display: none;
+  }
+  .nav__links {
+    margin: 0;
+  }
 }

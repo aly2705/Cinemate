@@ -49,6 +49,7 @@
   display: flex;
   justify-content: space-between;
   color: var(--color-text-primary);
+  gap: 3rem;
 }
 
 .movie-info__item {
@@ -118,4 +119,27 @@
 
 .play-btn {
   background-color: var(--color-accent);
+}
+@media only screen and (max-width: 75em) {
+  .movie-poster {
+    width: 35%;
+  }
+  .movie-modal {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 46.87em) {
+  .movie-poster {
+    display: none;
+  }
+  .movie-modal {
+    top: 12vh;
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 31.25em) {
+  .movie-title {
+    font-size: 2.8rem;
+  }
 }

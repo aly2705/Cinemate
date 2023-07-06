@@ -23,6 +23,11 @@
   --color-accent: #4fcaf7;
 
   /*-----BREAKPOINTS-----*/
+  --bp-big-desktop: 112.5em; /*1800px*/
+  --bp-tab-land: 75em; /*1200px*/
+  --bp-tab-port: 58.125em; /*930px*/
+  --bp-phone: 37.5em; /*600px*/
+  --bp-phone-small: 31.25em;
 }
 
 * {
@@ -34,6 +39,24 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+}
+
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+@media only screen and (max-width: 58.125em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media only screen and (min-width: 112.5em) {
+  html {
+    font-size: 75%;
+  }
 }
 
 body {
@@ -53,4 +76,11 @@ body {
   grid-template-rows: 4rem auto;
   column-gap: 4.5rem;
   row-gap: 1rem;
+}
+
+@media only screen and (max-width: 37.5em) {
+  .app {
+    grid-template-rows: 6rem 5.5rem auto;
+    grid-template-columns: 1fr;
+  }
 }
