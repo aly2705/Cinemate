@@ -4,6 +4,7 @@ import { Movie } from './main/movie.model';
 export class MoviesService {
   movies: Movie[] = [
     new Movie(
+      '1',
       'Fast X',
       '/e2Jd0sYMCe6qvMbswGQbM0Mzxt0.jpg',
       '/fiVW06jE7z9YnO4trhaMEdclSiC.jpg',
@@ -17,6 +18,7 @@ export class MoviesService {
       '2023-05-17'
     ),
     new Movie(
+      '2',
       'Extraction 2',
       '/fhquRW28vRZHr26orSaFFnhYIA0.jpg',
       '/7gKI9hpEMcZUQpNgKrkDzJpbnNS.jpg',
@@ -25,6 +27,7 @@ export class MoviesService {
       '2023-06-09'
     ),
     new Movie(
+      '3',
       'John Wick: Chapter 4',
       '/fgw4rFs4XMWdJTWp1eMacHKQqbZ.jpg',
       '/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg',
@@ -33,6 +36,7 @@ export class MoviesService {
       '2023-03-22'
     ),
     new Movie(
+      '4',
       'Spider-Man: Across the Spider-Verse',
       '/nGxUxi3PfXDRm7Vg95VBNgNM8yc.jpg',
       '/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg',
@@ -41,6 +45,7 @@ export class MoviesService {
       '2023-05-31'
     ),
     new Movie(
+      '5',
       'Fast X',
       '/e2Jd0sYMCe6qvMbswGQbM0Mzxt0.jpg',
       '/fiVW06jE7z9YnO4trhaMEdclSiC.jpg',
@@ -54,6 +59,7 @@ export class MoviesService {
       '2023-05-17'
     ),
     new Movie(
+      '6',
       'Extraction 2',
       '/fhquRW28vRZHr26orSaFFnhYIA0.jpg',
       '/7gKI9hpEMcZUQpNgKrkDzJpbnNS.jpg',
@@ -62,6 +68,7 @@ export class MoviesService {
       '2023-06-09'
     ),
     new Movie(
+      '7',
       'John Wick: Chapter 4',
       '/fgw4rFs4XMWdJTWp1eMacHKQqbZ.jpg',
       '/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg',
@@ -70,6 +77,7 @@ export class MoviesService {
       '2023-03-22'
     ),
     new Movie(
+      '8',
       'Spider-Man: Across the Spider-Verse',
       '/nGxUxi3PfXDRm7Vg95VBNgNM8yc.jpg',
       '/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg',
@@ -78,5 +86,10 @@ export class MoviesService {
       '2023-05-31'
     ),
   ];
-  movieDetailsRequested = new EventEmitter<Movie>();
+  bookmarks: string[] = ['7', '8'];
+
+  getMovieData(id: string): Movie {
+    const movie: Movie = this.movies.find((movie) => movie.id == id);
+    return movie;
+  }
 }

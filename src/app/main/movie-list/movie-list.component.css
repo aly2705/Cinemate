@@ -31,7 +31,6 @@
 .card {
   position: absolute;
   top: 50%;
-  /* transform: translateY(); */
   left: 0;
   transition: all 0.3s;
   width: 23rem;

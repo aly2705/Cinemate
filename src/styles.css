@@ -84,3 +84,17 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/*SHARED STYLES ACROSS COMPONENTS*/
+
+.list-container:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.list-container h2 {
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+}
+.movie-list {
+  position: relative;
+}

@@ -1,4 +1,5 @@
 export class Movie {
+  public id: string;
   public coverUrl: string;
   public posterUrl: string;
   public title: string;
@@ -7,6 +8,7 @@ export class Movie {
   public releaseDate: string;
 
   constructor(
+    id: string,
     title: string,
     cover: string,
     poster: string,
@@ -14,6 +16,7 @@ export class Movie {
     rating: number,
     releaseDate: string
   ) {
+    this.id = id;
     this.title = title;
     this.coverUrl = `https://image.tmdb.org/t/p/w342${cover}`;
     this.posterUrl = `https://image.tmdb.org/t/p/w342${poster}`;

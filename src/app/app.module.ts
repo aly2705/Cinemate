@@ -9,6 +9,9 @@ import { MovieListComponent } from './main/movie-list/movie-list.component';
 import { MovieCardComponent } from './main/movie-card/movie-card.component';
 import { MovieDetailsComponent } from './main/movie-details/movie-details.component';
 import { MoviesService } from './movies.service';
+import { MovieListsComponent } from './main/movie-lists/movie-lists.component';
+import { BookmarksComponent } from './main/bookmarks/bookmarks.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -19,8 +22,10 @@ import { MoviesService } from './movies.service';
     MovieListComponent,
     MovieCardComponent,
     MovieDetailsComponent,
+    MovieListsComponent,
+    BookmarksComponent,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [MoviesService],
   bootstrap: [AppComponent],
 })

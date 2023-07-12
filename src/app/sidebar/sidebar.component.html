@@ -6,7 +6,11 @@
 <nav class="nav">
   <ul class="nav__links">
     <li>
-      <a href="#" class="nav__link nav__link--active">
+      <a
+        [routerLink]="['/browse']"
+        routerLinkActive="nav__link--active"
+        class="nav__link"
+      >
         <svg>
           <use xlink:href="../../assets/icons.svg#icon-film1"></use>
         </svg>
@@ -14,7 +18,11 @@
       </a>
     </li>
     <li>
-      <a href="#" class="nav__link">
+      <a
+        [routerLink]="['/bookmarks']"
+        routerLinkActive="nav__link--active"
+        class="nav__link"
+      >
         <svg>
           <use xlink:href="../../assets/icons.svg#icon-bookmarks"></use>
         </svg>

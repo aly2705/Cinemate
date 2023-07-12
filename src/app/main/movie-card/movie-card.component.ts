@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Movie } from '../movie.model';
 import { MoviesService } from 'src/app/movies.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie-card',
@@ -9,14 +10,18 @@ import { MoviesService } from 'src/app/movies.service';
 })
 export class MovieCardComponent {
   @Input() movie: Movie;
-  @Input() id: number;
 
-  constructor(private moviesService: MoviesService) {}
+  constructor(
+    private moviesService: MoviesService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   getBackground(background: string) {
     return `linear-gradient(to bottom, transparent 10%,var(--color-overlay-2), var(--color-overlay)),url("${background}")`;
   }
   onOpenDetails() {
-    this.moviesService.movieDetailsRequested.emit(this.movie);
+    this.router.navigate([this.movie.id], { relativeTo: this.route });
   }
+  onBookmarkMovie() {}
 }

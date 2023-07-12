@@ -18,7 +18,6 @@
     #listItem
     *ngFor="let movie of movieList; let i = index; let last = last"
     [movie]="movie"
-    [id]="i"
     [ngStyle]="{ transform: getOffset(i) }"
   ></app-movie-card>
 </div>

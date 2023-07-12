@@ -5,7 +5,7 @@
   class="movie-card"
   (click)="onOpenDetails()"
 >
-  <button class="bookmark-btn">
+  <button class="bookmark-btn" (click)="onBookmarkMovie()">
     <svg class="bookmark-icon">
       <use xlink:href="../../../assets/icons.svg#icon-bookmark"></use>
     </svg>
