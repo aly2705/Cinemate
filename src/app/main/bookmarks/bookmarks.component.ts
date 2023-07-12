@@ -8,12 +8,16 @@ import { MoviesService } from 'src/app/movies.service';
   styleUrls: ['./bookmarks.component.css'],
 })
 export class BookmarksComponent implements OnInit {
-  bookmarks: Movie[] = [];
+  bookmarks: Movie[];
+  continueWatching: Movie[];
 
   constructor(private moviesService: MoviesService) {}
 
   ngOnInit(): void {
     this.bookmarks = this.moviesService.bookmarks.map((id) =>
+      this.moviesService.getMovieData(id)
+    );
+    this.continueWatching = this.moviesService.continueWatching.map((id) =>
       this.moviesService.getMovieData(id)
     );
   }

@@ -120,6 +120,9 @@
 .play-btn {
   background-color: var(--color-accent);
 }
+.bookmarked svg {
+  fill: var(--color-accent);
+}
 @media only screen and (max-width: 75em) {
   .movie-poster {
     width: 35%;

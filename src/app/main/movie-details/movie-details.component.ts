@@ -10,6 +10,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 })
 export class MovieDetailsComponent implements OnInit {
   movieData: Movie;
+  isBookmarked: boolean;
 
   constructor(
     private moviesService: MoviesService,
@@ -20,6 +21,10 @@ export class MovieDetailsComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
     this.movieData = this.moviesService.getMovieData(id);
+    this.isBookmarked =
+      this.moviesService.bookmarks.findIndex(
+        (bookmarkId) => bookmarkId === id
+      ) !== -1;
 
     this.route.params.subscribe((params: Params) => {
       this.movieData = this.moviesService.getMovieData(params['id']);
@@ -28,5 +33,14 @@ export class MovieDetailsComponent implements OnInit {
 
   onCloseModal() {
     this.router.navigate(['../'], { relativeTo: this.route });
+  }
+
+  onToggleBookmark() {
+    const isBookmarked = this.moviesService.toggleBookmark(this.movieData.id);
+    this.isBookmarked = isBookmarked;
+  }
+  onPlay() {
+    this.moviesService.startWatching(this.movieData.id);
+    this.router.navigate(['/bookmarks']);
   }
 }

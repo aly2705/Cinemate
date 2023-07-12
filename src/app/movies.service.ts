@@ -87,9 +87,24 @@ export class MoviesService {
     ),
   ];
   bookmarks: string[] = ['7', '8'];
+  continueWatching: string[] = ['1', '2'];
 
   getMovieData(id: string): Movie {
     const movie: Movie = this.movies.find((movie) => movie.id == id);
     return movie;
+  }
+
+  toggleBookmark(id: string) {
+    const index = this.bookmarks.findIndex((bookmarkId) => bookmarkId === id);
+
+    if (index == -1) this.bookmarks.push(id);
+    else this.bookmarks.splice(index, 1);
+    console.log(this.bookmarks);
+
+    return index == -1;
+  }
+
+  startWatching(id: string) {
+    if (!this.continueWatching.includes(id)) this.continueWatching.push(id);
   }
 }

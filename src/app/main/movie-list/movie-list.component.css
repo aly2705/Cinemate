@@ -39,4 +39,7 @@
   .card {
     width: 19rem;
   }
+  .list__btn--back {
+    left: -1.5rem;
+  }
 }

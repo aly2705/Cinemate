@@ -22,12 +22,16 @@
       {{ movieData.overview }}
     </p>
     <div class="btns">
-      <button class="btn play-btn">
+      <button class="btn play-btn" (click)="onPlay()">
         <svg>
           <use xlink:href="../../../assets/icons.svg#icon-play-circle"></use>
         </svg>
       </button>
-      <button class="btn bookmark-btn">
+      <button
+        class="btn bookmark-btn"
+        (click)="onToggleBookmark()"
+        [ngClass]="{ bookmarked: isBookmarked }"
+      >
         <svg>
           <use xlink:href="../../../assets/icons.svg#icon-bookmark"></use>
         </svg>

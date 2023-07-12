@@ -3,9 +3,13 @@
     backgroundImage: getBackground(movie.coverUrl)
   }"
   class="movie-card"
-  (click)="onOpenDetails()"
+  (click)="onOpenDetails($event)"
 >
-  <button class="bookmark-btn" (click)="onBookmarkMovie()">
+  <button
+    class="bookmark-btn"
+    (click)="onToggleBookmark()"
+    [ngClass]="{ bookmarked: isBookmarked }"
+  >
     <svg class="bookmark-icon">
       <use xlink:href="../../../assets/icons.svg#icon-bookmark"></use>
     </svg>

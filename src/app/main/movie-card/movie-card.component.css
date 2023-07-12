@@ -49,3 +49,11 @@
   padding: 0.7rem 1.2rem;
   font-weight: 700;
 }
+
+.bookmarked {
+  background-color: var(--color-accent);
+}
+
+.bookmarked svg {
+  fill: var(--color-grey);
+}
