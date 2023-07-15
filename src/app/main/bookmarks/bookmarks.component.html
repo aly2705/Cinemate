@@ -1,12 +1,19 @@
-<div class="list-container">
+<div class="list-container" *ngIf="bookmarks.length > 0">
   <h2>Bookmarks</h2>
   <app-movie-list [movieList]="bookmarks" class="movie-list"></app-movie-list>
 </div>
-<div class="list-container">
+<div class="list-container" *ngIf="continueWatching.length > 0">
   <h2>Continue watching</h2>
   <app-movie-list
     [movieList]="continueWatching"
     class="movie-list"
   ></app-movie-list>
+</div>
+<div *ngIf="continueWatching.length === 0 && bookmarks.length === 0">
+  <h2>OOOOPS!😯</h2>
+  <h3>
+    Seems like you don't have any bookmarks! Play a movie or bookmark your
+    favorites!
+  </h3>
 </div>
 <router-outlet></router-outlet>
