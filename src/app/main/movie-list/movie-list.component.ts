@@ -6,15 +6,19 @@ import {
   QueryList,
   AfterViewInit,
   ElementRef,
+  OnChanges,
+  AfterViewChecked,
 } from '@angular/core';
-import { Movie } from '../movie.model';
+import { Movie } from '../../models/movie.model';
 
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.css'],
 })
-export class MovieListComponent implements OnInit, AfterViewInit {
+export class MovieListComponent
+  implements OnInit, AfterViewInit, OnChanges, AfterViewChecked
+{
   @Input() movieList: Movie[];
   // decorator to get DOM references from the movieList in the template
   @ViewChildren('listItem', { read: ElementRef })
@@ -30,9 +34,16 @@ export class MovieListComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.lastItemRef = this.listItems.last;
   }
+  ngOnChanges(): void {
+    this.positions = this.movieList.map((_, i) => i);
+  }
+  ngAfterViewChecked(): void {
+    this.lastItemRef = this.listItems.last;
+  }
 
   getOffset(index: number) {
     const position = this.positions.at(index);
+
     return `translate(${position * 115}%, -50%)`;
   }
 

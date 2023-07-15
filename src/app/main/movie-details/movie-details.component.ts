@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Movie } from '../movie.model';
+import { Movie } from '../../models/movie.model';
 import { MoviesService } from 'src/app/movies.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 

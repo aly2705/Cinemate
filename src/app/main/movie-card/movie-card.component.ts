@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Movie } from '../movie.model';
+import { Movie } from '../../models/movie.model';
 import { MoviesService } from 'src/app/movies.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -21,6 +21,14 @@ export class MovieCardComponent implements OnInit {
   ngOnInit(): void {
     this.isBookmarked =
       this.moviesService.bookmarks.findIndex((id) => this.movie.id == id) > -1;
+
+    this.moviesService.movieBookmarked.subscribe((id: string) => {
+      if (this.movie.id === id)
+        this.isBookmarked =
+          this.moviesService.bookmarks.findIndex(
+            (bookmarkId) => bookmarkId === id
+          ) > -1;
+    });
   }
 
   getBackground(background: string) {

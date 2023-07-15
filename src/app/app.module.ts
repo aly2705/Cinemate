@@ -12,6 +12,7 @@ import { MoviesService } from './movies.service';
 import { MovieListsComponent } from './main/movie-lists/movie-lists.component';
 import { BookmarksComponent } from './main/bookmarks/bookmarks.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,8 @@ import { AppRoutingModule } from './app-routing.module';
     MovieListsComponent,
     BookmarksComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [MoviesService],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from '../movie.model';
+import { Movie } from '../../models/movie.model';
 import { MoviesService } from 'src/app/movies.service';
 
 @Component({
@@ -8,11 +8,21 @@ import { MoviesService } from 'src/app/movies.service';
   styleUrls: ['./movie-lists.component.css'],
 })
 export class MovieListsComponent implements OnInit {
-  movies: Movie[];
+  trending: Movie[] = [];
+  movies: Movie[] = [];
+  series: Movie[] = [];
 
   constructor(private moviesService: MoviesService) {}
 
   ngOnInit(): void {
-    this.movies = this.moviesService.movies;
+    this.moviesService.fetchMoviesSubject.subscribe(() => {
+      this.movies = this.moviesService.movies;
+    });
+    this.moviesService.fetchTrendingSubject.subscribe(() => {
+      this.trending = this.moviesService.trending;
+    });
+    this.moviesService.fetchSeriesSubject.subscribe(() => {
+      this.series = this.moviesService.series;
+    });
   }
 }
