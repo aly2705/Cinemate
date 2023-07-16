@@ -1,0 +1,15 @@
+<div class="list-container" *ngIf="searchResults.length > 0">
+  <h2>Search Results</h2>
+  <div class="list">
+    <app-movie-card
+      *ngFor="let movie of searchResults; let i = index"
+      [movie]="movie"
+    ></app-movie-card>
+  </div>
+</div>
+
+<div *ngIf="searchResults.length === 0">
+  <h2>OOOOPS!😯</h2>
+  <h3>Looks like there are no results for your query!</h3>
+</div>
+<router-outlet></router-outlet>

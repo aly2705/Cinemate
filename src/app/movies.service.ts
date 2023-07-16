@@ -14,6 +14,9 @@ export class MoviesService {
   continueWatching: string[] = [];
   movieBookmarked = new Subject<string>();
   fetchMoviesSubject = new Subject<void>();
+  searchResultsUpdated = new Subject<void>();
+  userSaved: Movie[] = [];
+  searchResults: Movie[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -32,13 +35,19 @@ export class MoviesService {
   fetchData() {
     return forkJoin([
       this.fetchTrending(),
-      this.fetchSeries(),
       this.fetchMovies(),
+      this.fetchSeries(),
     ]);
   }
 
   getMovieData(id: string): Movie {
-    const allMovies = [...this.movies, ...this.trending, ...this.series];
+    const allMovies = [
+      ...this.movies,
+      ...this.trending,
+      ...this.series,
+      ...this.searchResults,
+      ...this.userSaved,
+    ];
     const movie: Movie = allMovies.find((movie) => movie.id == id);
     return movie;
   }
@@ -58,6 +67,44 @@ export class MoviesService {
   startWatching(id: string) {
     if (!this.continueWatching.includes(id)) this.continueWatching.push(id);
     this.persistWatching(this.continueWatching);
+  }
+
+  searchMovie(query: string) {
+    this.http
+      .get<MovieListAPIObject>(
+        `
+    https://api.themoviedb.org/3/search/multi?api_key=afe0cbb1a8d32b292c597c90b5be2144&query=${query}`
+      )
+      .pipe(
+        map((responseData) => {
+          const results = responseData.results;
+
+          return results
+            .filter(
+              (result) =>
+                result.overview &&
+                result.vote_average &&
+                result.poster_path &&
+                result.release_date
+            )
+            .map(
+              (result) =>
+                new Movie(
+                  `${result.id}`,
+                  result.title || result.name,
+                  result.backdrop_path || result.poster_path,
+                  result.poster_path,
+                  result.overview,
+                  result.vote_average,
+                  result.release_date
+                )
+            );
+        })
+      )
+      .subscribe((movies) => {
+        this.searchResults = movies;
+        this.searchResultsUpdated.next();
+      });
   }
 
   private persistBookmarks(bookmarks: string[]) {
@@ -90,10 +137,6 @@ export class MoviesService {
           );
         })
       );
-    // .subscribe((movies: Movie[]) => {
-    //   this.movies = movies;
-    //   this.fetchMoviesSubject.next();
-    // });
   }
   private fetchTrending(): Observable<Movie[]> {
     return this.http
@@ -118,10 +161,6 @@ export class MoviesService {
           );
         })
       );
-    // .subscribe((movies: Movie[]) => {
-    //   this.trending = movies;
-    //   this.fetchTrendingSubject.next();
-    // });
   }
   private fetchSeries(): Observable<Movie[]> {
     return this.http
@@ -146,9 +185,5 @@ export class MoviesService {
           );
         })
       );
-    // .subscribe((movies: Movie[]) => {
-    //   this.series = movies;
-    //   this.fetchSeriesSubject.next();
-    // });
   }
 }

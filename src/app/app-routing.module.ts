@@ -4,6 +4,7 @@ import { MovieListsComponent } from './main/movie-lists/movie-lists.component';
 import { BookmarksComponent } from './main/bookmarks/bookmarks.component';
 import { NgModule } from '@angular/core';
 import { MovieDetailsComponent } from './main/movie-details/movie-details.component';
+import { SearchComponent } from './main/search/search.component';
 
 const appRoutes: Routes = [
   {
@@ -16,6 +17,12 @@ const appRoutes: Routes = [
     component: BookmarksComponent,
     children: [{ path: ':id', component: MovieDetailsComponent }],
   },
+  {
+    path: 'search',
+    component: SearchComponent,
+    children: [{ path: ':id', component: MovieDetailsComponent }],
+  },
+
   { path: '', redirectTo: 'browse', pathMatch: 'full' },
   { path: '**', redirectTo: '' },
 ];

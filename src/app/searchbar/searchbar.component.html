@@ -1,6 +1,13 @@
-<form class="search-bar">
+<form class="search-bar" (ngSubmit)="onSearch()" #f="ngForm">
   <svg class="search-icon">
     <use xlink:href="../../assets/icons.svg#icon-search"></use>
   </svg>
-  <input class="search-input" type="text" placeholder="Search for a movie..." />
+  <input
+    class="search-input"
+    type="text"
+    placeholder="Search for a movie..."
+    ngModel
+    name="search"
+    required
+  />
 </form>
