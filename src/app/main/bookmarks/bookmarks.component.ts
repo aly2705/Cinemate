@@ -14,6 +14,13 @@ export class BookmarksComponent implements OnInit {
   constructor(private moviesService: MoviesService) {}
 
   ngOnInit(): void {
+    this.mapBookmarksAndWatching();
+    this.moviesService.fetchMoviesSubject.subscribe(() => {
+      this.mapBookmarksAndWatching();
+    });
+  }
+
+  private mapBookmarksAndWatching() {
     this.bookmarks = this.moviesService.bookmarks.map((id) =>
       this.moviesService.getMovieData(id)
     );

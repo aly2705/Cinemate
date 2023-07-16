@@ -10,6 +10,6 @@ export class AppComponent implements OnInit {
   constructor(private moviesService: MoviesService) {}
 
   ngOnInit(): void {
-    this.moviesService.fetchData();
+    this.moviesService.initMovies();
   }
 }
